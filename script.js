@@ -18,18 +18,12 @@ document.getElementById("year").textContent = new Date().getFullYear();
 const contactForm = document.getElementById("contactForm");
 
 contactForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
   const name = contactForm.elements["name"].value.trim();
   const message = contactForm.elements["message"].value.trim();
-  const formMessage = document.getElementById("formMessage");
 
   if (name.length < 2 || message.length < 5) {
-    formMessage.textContent =
+    event.preventDefault();
+    document.getElementById("formMessage").textContent =
       "Enter a valid name and a message of at least 5 characters.";
-    return;
   }
-
-  formMessage.textContent = "Thanks! Your form passed validation.";
-  contactForm.reset();
 });
